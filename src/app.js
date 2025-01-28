@@ -2,7 +2,7 @@ import './styles/styles.scss';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-//import configureStore from './store/configureStore';
+import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
 
 import AppRouter from './routers/AppRouter';
@@ -10,23 +10,23 @@ import AppRouter from './routers/AppRouter';
 // import { fetchExpenses } from './slicereducers/expensesSlice';
 // import { useGetAllExpensesQuery } from './api/getAllExpenses';
 
-//const store = configureStore();
+const store = configureStore();
 
 
-
-// const jsx = (
-//     <Provider store={store}>
-//         <AppRouter />
-//     </Provider>
-
-// )
 
 const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
 
-    <AppRouter />
+);
+
+// const jsx = (
+
+//     <AppRouter />
 
 
-)
+// )
 
 // const App = () => {
 //     const { data, error, isLoading } = useGetAllExpensesQuery('getallexpenses')

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router";
 import InvoiceDashboardPage from '../components/InvoiceDashboardPage';
+import InvoiceView from '../components/InvoiceView';
+import Header from '../components/Header';
 // import AddExpensePage from '../components/AddExpensePage';
 // import EditExpensePage from '../components/EditExpensePage';
 // import ExpenseHelpPage from '../components/ExpenseHelpPage';
@@ -12,13 +14,17 @@ import NotFoundPage from '../components/NotFoundPage';
 
 const AppRouter = () => (
     <BrowserRouter >
-
+        <Header />
         <Routes>
+
             <Route path="/" element={<InvoiceDashboardPage />} />
+            <Route path="/view/:id" element={<InvoiceView />} />
 
 
             <Route path="*" element={<NotFoundPage />} />
+
         </Routes>
+
     </BrowserRouter>
 )
 

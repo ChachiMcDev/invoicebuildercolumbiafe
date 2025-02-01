@@ -1,0 +1,19 @@
+
+
+{
+company name:
+billing address:
+shipping address:
+invoice notes:
+order date:
+invoice total:
+invoice #:
+item: {
+	item number:
+	item price:
+	deposit:
+	discount:
+	quantity:
+	total:
+	}
+}

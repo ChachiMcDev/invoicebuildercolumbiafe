@@ -11,8 +11,12 @@ export const getInvoicesApi = createApi({
         getInvoices: builder.query({
             query: (expurl) => `${expurl}`,
             providesTags: ['invoices']
+        }),
+        getInvoiceById: builder.query({
+            query: (id) => `api/getinvoice/${id}`,
+            invalidatesTags: ['invoices']
         })
     })
 });
 
-export const { useGetInvoicesQuery } = getInvoicesApi;
+export const { useGetInvoicesQuery, useGetInvoiceByIdQuery } = getInvoicesApi;

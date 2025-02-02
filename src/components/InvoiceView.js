@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import { Page, Text, View, Document, StyleSheet, PDFViewer } from '@react-pdf/renderer';
-
+import { useGetInvoiceByIdQuery } from "../api/getInvoices";
 
 
 // Create styles
@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
 });
 
 
-const MyDocument = () => {
+const invoicePDF = () => {
     const { id } = useParams();
     console.log("id: ", id);
+    console.log("what in the holly hell")
     return (
         <Document>
             <Page size="A4" style={styles.page}>
@@ -39,15 +40,37 @@ const MyDocument = () => {
 
 const InvoiceView = () => {
     const { id } = useParams();
-    console.log("id: ", id);
+    const { data, error, isLoading } = useGetInvoiceByIdQuery(id);
+    // console.log("invoice data: ", data);
+    if (isLoading) {
+        return <div>Loading...</div>
+    } else if (error) {
+        return <div>Error: {error.message}</div>
+    } else if (data) {
+        const { invoiceNumber, companyName, products, description, createdAt } = data;
+        return (
 
-    return (
+            <div>
+                your invice id is: {id}
+                <div>Invoice Number: {invoiceNumber}</div>
+                <div>Company Name: {companyName}</div>
+                {products.map((invProduct, iny) => (
+                    <div key={iny}>
+                        {console.log(invProduct)}
+                    </div>
+                ))}
+                <div className="w-full h-[750px]">
+                    <PDFViewer width="100%" height="100%">
+                        <invoicePDF />
+                    </PDFViewer>
+                </div>
+            </div>
 
-        <PDFViewer>
-            <MyDocument />
-        </PDFViewer>
+        );
+    }
 
-    );
+
+
 
 };
 

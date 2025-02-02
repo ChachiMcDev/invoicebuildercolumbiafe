@@ -5,9 +5,9 @@ import numeral from 'numeral';
 
 
 
-const InvoiceListItem = ({ _id, invoiceNumber, companyName, products, description, createdAt, amount }) => {
+const InvoiceListItem = ({ _id, invoiceNumber, companyName, products, description, createdAt }) => {
     const invoiceTotal = products.reduce((accumulator, obj) => accumulator + obj.itemPrice, 0);
-    console.log(invoiceTotal);
+    const totalProducts = products.length;
     return (
         <div>
             <Link to={`/view/${_id}`}>
@@ -15,10 +15,9 @@ const InvoiceListItem = ({ _id, invoiceNumber, companyName, products, descriptio
             </Link>
             <p>Company Name: {companyName}</p>
             <p>Invoice Total: {invoiceTotal}</p>
-            <p>TO BE CHANGED</p>
-            <p>{description}</p>
-            <p>{createdAt}</p>
-            <p>{amount}</p>
+            <p>Invoice Description: {description}</p>
+            <p>Order Date: {createdAt}</p>
+            <p>Total Products ordered: {totalProducts}</p>
 
         </div>
     )

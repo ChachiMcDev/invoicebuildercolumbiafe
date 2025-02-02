@@ -30,7 +30,18 @@ module.exports = (env) => {
                 test: /\.js$/,
                 exclude: /node_modules/
             },
-
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
+            },
             {
                 //use: ['style-loader', 'css-loader', 'sass-loader'],
                 test: /\.s?css$/i,
@@ -48,8 +59,8 @@ module.exports = (env) => {
                 }, {
                     loader: 'sass-loader',
                     options: {
-                    //   data: '@use "styles/styles.scss";',
-                    //   includePaths:[__dirname, 'src']
+                        //   data: '@use "styles/styles.scss";',
+                        //   includePaths:[__dirname, 'src']
                     }
                 },]
             }]

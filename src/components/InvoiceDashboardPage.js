@@ -11,7 +11,6 @@ const InvoiceDashboardPage = () => {
   console.log("filters: ", filters);
   return (
     <div>
-      INVOICE VIEW PAGE PAGE!!
       <InvoiceListFilters />
       <InvoiceList />
     </div>

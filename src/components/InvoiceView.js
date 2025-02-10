@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetInvoiceByIdQuery } from "../api/getInvoices";
-
+import numeral from 'numeral';
 import {
   Page,
   Image,
@@ -66,7 +66,9 @@ const InvoiceView = () => {
     return <div>Error: {error.message}</div>;
   } else if (data) {
     const { invoiceNumber, companyName, products, address, city, state, zip, description, createdAt } = data;
-
+    const invoiceTotal = products.reduce((accumulator, obj) => accumulator + obj.itemPrice * obj.quantity, 0);
+    const taxTotal = invoiceTotal * 0.10;
+    const grandTotal = invoiceTotal + taxTotal;
     return (
       <div>
         <div className="w-full h-[750px]">
@@ -107,8 +109,8 @@ const InvoiceView = () => {
                     <View key={index} style={[styles.linitems]}>
                       <Text style={{ width: "15%", flexShrink: 0 }}>{item.quantity}</Text>
                       <Text style={{ width: "55%", flexShrink: 0 }}>{item.itemName}</Text>
-                      <Text style={{ width: "15%", flexShrink: 0 }}>{item.itemPrice}</Text>
-                      <Text style={{ width: "15%", flexShrink: 0 }}>{item.itemPrice * item.quantity}</Text>
+                      <Text style={{ width: "15%", flexShrink: 0 }}>{numeral(item.itemPrice / 100).format('$0,0.00')}</Text>
+                      <Text style={{ width: "15%", flexShrink: 0 }}>{numeral(item.itemPrice * item.quantity / 100).format('$0,0.00')}</Text>
                     </View>
                   );
                 })}
@@ -116,17 +118,17 @@ const InvoiceView = () => {
                   <Text style={{ width: "15%", flexShrink: 0 }}></Text>
                   <Text style={{ width: "55%", flexShrink: 0 }}></Text>
                   <Text style={{ width: "15%", flexShrink: 0 }}>SubTotal:</Text>
-                  <Text style={{ width: "15%", flexShrink: 0 }}>$2,000/fix</Text>
+                  <Text style={{ width: "15%", flexShrink: 0 }}>{numeral(invoiceTotal / 100).format('$0,0.00')}</Text>
                 </View>
                 <View style={[styles.linitems, {}]}>
                   <Text style={{ width: "15%", flexShrink: 0 }}></Text>
                   <Text style={{ width: "55%", flexShrink: 0 }}></Text>
                   <Text style={{ width: "15%", flexShrink: 0 }}>Tax + 10%</Text>
-                  <Text style={{ width: "15%", flexShrink: 0 }}>$200/fixme</Text>
+                  <Text style={{ width: "15%", flexShrink: 0 }}>{numeral(taxTotal / 100).format('$0,0.00')}</Text>
                 </View>
                 <View style={[styles.linitems, { marginTop: 20 }]}>
                   <Text style={{ width: "60%", flexShrink: 0 }}></Text>
-                  <Text style={[styles.textBold, { width: "40%", flexShrink: 0, backgroundColor: "#526274", color: "#fff", padding: 20, textAlign: "right" }]}>Grand Total:   $8865/fix</Text>
+                  <Text style={[styles.textBold, { width: "40%", flexShrink: 0, backgroundColor: "#526274", color: "#fff", padding: 20, textAlign: "right" }]}>  {`Grand Total:  ${numeral(grandTotal / 100).format('$0,0.00')}`}</Text>
                 </View>
                 <Text style={{ flexDirection: "row", width: "100%", textAlign: "center" }} render={({ pageNumber, totalPages }) => `Page ${pageNumber} of ${totalPages}`} fixed ></Text>
               </Page>

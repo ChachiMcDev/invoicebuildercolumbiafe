@@ -6,7 +6,7 @@ import numeral from 'numeral';
 
 
 const InvoiceListItem = ({ _id, invoiceNumber, companyName, products, description, createdAt }) => {
-    const invoiceTotal = products.reduce((accumulator, obj) => accumulator + obj.itemPrice, 0);
+    const invoiceTotal = products.reduce((accumulator, obj) => accumulator + obj.itemPrice * obj.quantity, 0);
     const totalProducts = products.length;
     return (
         <div>

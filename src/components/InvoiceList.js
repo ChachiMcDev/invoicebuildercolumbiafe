@@ -19,16 +19,16 @@ const InvoiceList = () => {
             ) : isLoading ? (
                 <>Loading...</>
             ) : data ? (
-                <>
+                <div className="content-container">
 
-                    <h1>Invoice List</h1>
-                    {getVisibleInvoices(data, filts).map((invoice, iny) => (
-                        <div key={iny}>
-                            <InvoiceListItem {...invoice} />
-                        </div>
-                    ))}
-
-                </>
+                    <div className="list-body">
+                        {getVisibleInvoices(data, filts).map((invoice, iny) => (
+                            <div key={iny}>
+                                <InvoiceListItem {...invoice} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             ) : null}
         </>
     )

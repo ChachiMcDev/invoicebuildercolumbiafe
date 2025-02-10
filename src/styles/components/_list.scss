@@ -1,5 +1,5 @@
-@use "../base/settings" as *;
-@use "sass:color" as color;
+@use '../base/settings' as *;
+@use 'sass:color' as color;
 
 .list-header {
   background: $off-white;
@@ -11,6 +11,7 @@
 }
 
 .list-item {
+  width: 100%;
   border-top: none;
   border: 1px solid color.adjust($off-white, $lightness: -7%);
   display: flex;
@@ -61,4 +62,21 @@
     margin: 0;
     padding-left: $s-size;
   }
+}
+
+.i_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.w_50 {
+  width: 50%;
+}
+
+.w_25 {
+  width: 25%;
+}
+
+.w_75 {
+  width: 75%;
 }

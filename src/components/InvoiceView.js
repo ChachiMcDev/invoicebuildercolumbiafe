@@ -65,7 +65,7 @@ const InvoiceView = () => {
   } else if (error) {
     return <div>Error: {error.message}</div>;
   } else if (data) {
-    const { invoiceNumber, companyName, products, description, createdAt } = data;
+    const { invoiceNumber, companyName, products, address, city, state, zip, description, createdAt } = data;
 
     return (
       <div>
@@ -73,6 +73,7 @@ const InvoiceView = () => {
           <PDFViewer style={{ width: "100vw", height: "100vh" }}>
             <Document title={`Invoice: ${invoiceNumber}`}>
               <Page size="A4" style={styles.page}>
+
                 <View style={styles.header}>
                   <View>
                     <Image src={logo} style={{ width: 400, height: 100, marginLeft: -40 }} />
@@ -89,9 +90,9 @@ const InvoiceView = () => {
                   </View>
                   <View style={styles.spaceY}>
                     <Text>To:</Text>
-                    <Text style={[styles.textBold]}>Johnny C Store</Text>
-                    <Text>University place S.</Text>
-                    <Text>Seattle, WA 98166</Text>
+                    <Text style={[styles.textBold]}>{companyName}</Text>
+                    <Text>{address}.</Text>
+                    <Text>{city}, {state} {zip}</Text>
                   </View>
                 </View>
                 <View style={[styles.linitems, styles.bottomborder, { padding: "0px 0px 20px 0px" }]}>
@@ -126,9 +127,8 @@ const InvoiceView = () => {
                 <View style={[styles.linitems, { marginTop: 20 }]}>
                   <Text style={{ width: "60%", flexShrink: 0 }}></Text>
                   <Text style={[styles.textBold, { width: "40%", flexShrink: 0, backgroundColor: "#526274", color: "#fff", padding: 20, textAlign: "right" }]}>Grand Total:   $8865/fix</Text>
-
                 </View>
-
+                <Text style={{ flexDirection: "row", width: "100%", textAlign: "center" }} render={({ pageNumber, totalPages }) => `Page ${pageNumber} of ${totalPages}`} fixed ></Text>
               </Page>
             </Document>
           </PDFViewer>

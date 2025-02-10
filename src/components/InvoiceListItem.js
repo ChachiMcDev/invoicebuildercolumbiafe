@@ -10,14 +10,16 @@ const InvoiceListItem = ({ _id, invoiceNumber, companyName, products, descriptio
     const totalProducts = products.length;
     return (
         <div>
-            <Link to={`/view/${_id}`}>
-                <h3>Invoice Name: {invoiceNumber}</h3>
+            <Link className="list-item" to={`/view/${_id}`}>
+
+                <div>
+                    <h3 className="list-item__title">Invoice Number: {invoiceNumber}</h3>
+                    <span className="list-item__sub-title">Order Date: April, 20th 2025</span>
+                </div>
+                <h3 className="list-item__data">Invoice Total: {numeral(invoiceTotal / 100).format('$0,0.00')}</h3>
             </Link>
-            <p>Company Name: {companyName}</p>
-            <p>Invoice Total: {invoiceTotal}</p>
-            <p>Invoice Description: {description}</p>
-            <p>Order Date: {createdAt}</p>
-            <p>Total Products ordered: {totalProducts}</p>
+
+
 
         </div>
     )

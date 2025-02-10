@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { url } = require('inspector');
+const { TRUE } = require('sass');
 
 module.exports = (env) => {
     const { production } = env;
@@ -54,7 +55,8 @@ module.exports = (env) => {
                 }, {
                     loader: 'css-loader',
                     options: {
-                        url: false
+                        url: true,
+                        sourceMap: true
                     }
                 }, {
                     loader: 'sass-loader',

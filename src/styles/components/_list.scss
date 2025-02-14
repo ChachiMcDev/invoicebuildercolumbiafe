@@ -1,5 +1,5 @@
-@use '../base/settings' as *;
-@use 'sass:color' as color;
+@use "../base/settings" as *;
+@use "sass:color" as color;
 
 .list-header {
   background: $off-white;
@@ -51,13 +51,22 @@
   font-size: 1.4rem;
 }
 
+.list-item__description {
+  display: flex;
+}
+
 .list-item__note {
   color: green;
   font-weight: bold;
 }
 
+.list-item > div {
+  width: 50%;
+}
+
 .list-item__data {
   margin: $s-size 0 0 0;
+  width: 25%;
   @media screen and (min-width: $desktop-breakpoint) {
     margin: 0;
     padding-left: $s-size;
@@ -79,4 +88,12 @@
 
 .w_75 {
   width: 75%;
+}
+
+.columbiaBlue {
+  color: #0776f5;
+}
+
+.boldtext {
+  font-weight: bold;
 }

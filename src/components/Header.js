@@ -15,11 +15,14 @@ const Header = () => {
           <Link className="header__title" to="/dashboard">
             <h1>Columbia</h1>
           </Link>
-          <Link to="/">
-            <button className="button button--link" >
-              Logout
-            </button>
-          </Link>
+          <div className="header__logout">
+            <Link to="/">
+              <button className="button button--link" >
+                Logout
+              </button>
+            </Link>
+          </div>
+
         </div>
       </div>
     </header>

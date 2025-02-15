@@ -4,12 +4,8 @@ import InvoiceDashboardPage from '../components/InvoiceDashboardPage';
 import InvoiceView from '../components/InvoiceView';
 import Header from '../components/Header';
 import LoginPage from '../components/LoginPage';
-
-// import AddExpensePage from '../components/AddExpensePage';
-// import EditExpensePage from '../components/EditExpensePage';
-// import ExpenseHelpPage from '../components/ExpenseHelpPage';
 import NotFoundPage from '../components/NotFoundPage';
-// import LoginPage from '../components/LoginPage';
+
 // import RegisterPage from '../components/RegisterUser';
 // import ProtectedRoute from './ProtectedRoutes';
 

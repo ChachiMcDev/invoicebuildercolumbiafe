@@ -6,7 +6,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import dayjs from "dayjs";
 
-const ExpenseListFilters = () => {
+const InvoiceListFilters = () => {
     const { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } =
         filtersSlice.actions;
     const filters = useSelector((state) => state.filters);
@@ -68,4 +68,4 @@ const ExpenseListFilters = () => {
     );
 };
 
-export default ExpenseListFilters;
+export default InvoiceListFilters;

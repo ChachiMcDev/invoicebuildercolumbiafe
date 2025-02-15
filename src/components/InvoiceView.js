@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
 const InvoiceView = () => {
   const { id } = useParams();
   const { data, error, isLoading } = useGetInvoiceByIdQuery(id);
-  // console.log("invoice data: ", data);
   if (isLoading) {
     return <div>Loading...</div>;
   } else if (error) {
@@ -73,7 +72,7 @@ const InvoiceView = () => {
       <div>
         <div className="w-full h-[750px]">
           <PDFViewer style={{ width: "100vw", height: "100vh" }}>
-            <Document title={`Invoice: ${invoiceNumber}`}>
+            <Document title={`Invoice#: ${invoiceNumber}`}>
               <Page size="A4" style={styles.page}>
 
                 <View style={styles.header}>
@@ -114,6 +113,7 @@ const InvoiceView = () => {
                     </View>
                   );
                 })}
+
                 <View style={[styles.linitems, { borderTop: "3px solid #526274", paddingTop: 10, marginBottom: 5 }]}>
                   <Text style={{ width: "15%", flexShrink: 0 }}></Text>
                   <Text style={{ width: "55%", flexShrink: 0 }}></Text>
@@ -142,35 +142,3 @@ const InvoiceView = () => {
 
 export default InvoiceView;
 
-// const InvoiceView = () => {
-//     const { id } = useParams();
-//     const { data, error, isLoading } = useGetInvoiceByIdQuery(id);
-//     // console.log("invoice data: ", data);
-//     if (isLoading) {
-//         return <div>Loading...</div>
-//     } else if (error) {
-//         return <div>Error: {error.message}</div>
-//     } else if (data) {
-//         const { invoiceNumber, companyName, products, description, createdAt } = data;
-//         return (
-
-//             <div>
-//                 your invice id is: {id}
-//                 <div>Invoice Number: {invoiceNumber}</div>
-//                 <div>Company Name: {companyName}</div>
-//                 {products.map((invProduct, iny) => (
-//                     <div key={iny}>
-//                         {console.log(invProduct)}
-//                     </div>
-//                 ))}
-//                 <div className="w-full h-[750px]">
-//                     <PDFViewer width="100%" height="100%">
-//                         <invoicePDF />
-//                     </PDFViewer>
-//                 </div>
-//             </div>
-
-//         );
-//     }
-
-// };

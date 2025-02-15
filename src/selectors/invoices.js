@@ -28,6 +28,7 @@ const getVisibleInvoices = (invoices, { text, sortBy, startDate, endDate }) => {
         return a.createdAt < b.createdAt ? 1 : -1;
       }
       if (sortBy === "amount") {
+        //add up the total amount of the products in the products array and compare to each other
         return a.products.reduce(
           (accumulator, obj) => accumulator + obj.itemPrice * obj.quantity,
           0

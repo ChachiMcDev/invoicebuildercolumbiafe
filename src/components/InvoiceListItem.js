@@ -6,7 +6,6 @@ import numeral from "numeral";
 const InvoiceListItem = ({
   _id,
   invoiceNumber,
-  companyName,
   products,
   description,
   createdAt,

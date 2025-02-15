@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 const Header = () => {
-
-  const navigate = useNavigate();
-
+  const currentLocation = useLocation();
+  const currentPath = currentLocation.pathname;
+  console.log(currentPath);
 
   return (
     <header className="header">
@@ -15,14 +15,13 @@ const Header = () => {
           <Link className="header__title" to="/dashboard">
             <h1>Columbia</h1>
           </Link>
-          <div className="header__logout">
+          {currentPath === "/" ? "" : (<div className="header__logout">
             <Link to="/">
               <button className="button button--link" >
                 Logout
               </button>
             </Link>
-          </div>
-
+          </div>)}
         </div>
       </div>
     </header>

@@ -6,7 +6,7 @@ import getVisibleInvoices from "../selectors/invoices";
 
 const InvoiceList = () => {
   const filts = useSelector((state) => state.filters);
-  const { data, error, isLoading } = useGetInvoicesQuery(`/api/test`);
+  const { data, error, isLoading } = useGetInvoicesQuery(`/api/getinvoices`);
 
   return (
     <>

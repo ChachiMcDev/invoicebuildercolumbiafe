@@ -1,12 +1,10 @@
 import React from "react";
 import InvoiceList from "./InvoiceList";
-import { connect, useSelector, useDispatch } from 'react-redux';
-import filtersSlice from '../slicereducers/filterSlice';
+import { useSelector } from 'react-redux';
 import InvoiceListFilters from "./InvoiceListFilters";
 
 
 const InvoiceDashboardPage = () => {
-  const { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } = filtersSlice.actions
   const filters = useSelector((state) => state.filters);
   console.log("filters: ", filters);
   return (

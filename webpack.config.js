@@ -51,7 +51,7 @@ module.exports = (env) => {
                         options: {
                             limit: 8192, // Convert images < 8kb to base64 strings
                             name: 'assets/[hash:8].[ext]',
-                            publicPath: '../public', // Critical for resolving paths correctly
+                            publicPath: '../', // Critical for resolving paths correctly
                         },
                     },
                 ],

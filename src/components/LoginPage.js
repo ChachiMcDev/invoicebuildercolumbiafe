@@ -25,14 +25,14 @@ const LoginPage = () => {
             return;
         }
         navToDash('/dashboard');
-
-
     };
 
-
-
     return (
-        <div className="box-layout">
+        <div className="box-layout" style={{
+            backgroundImage: `url(images/bw-beach.jpg)`,
+            backgroundSize: 'cover',
+            height: '100vh' // Adjust as needed
+        }}>
             <div className="box-layout__box">
                 <h1 className="box-layout__title">Login To Invoice App</h1>
                 <form>
@@ -44,7 +44,6 @@ const LoginPage = () => {
                                 id="username"
                                 name="username"
                                 onChange={handleChange}
-
                             />
                         </div>
                         <div>
@@ -54,17 +53,13 @@ const LoginPage = () => {
                                 id="password"
                                 name="password"
                                 onChange={handleChange}
-
                             />
                         </div>
-
                     </div>
-
                     <button className="button" type="button" onClick={handleLogin} >Login</button>
                 </form>
                 <NavLink to="/register" className="box-layout__navlink">Register Account</NavLink>
             </div>
-
         </div>
     );
 };

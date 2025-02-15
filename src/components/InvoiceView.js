@@ -11,7 +11,7 @@ import {
   StyleSheet,
   PDFViewer,
 } from "@react-pdf/renderer";
-import logo from "../images/columbia_logo_blue.png";
+//import logo from "../images/columbia_logo_blue.png";
 
 const styles = StyleSheet.create({
   page: {
@@ -77,7 +77,7 @@ const InvoiceView = () => {
 
                 <View style={styles.header}>
                   <View>
-                    <Image src={logo} style={{ width: 400, height: 100, marginLeft: -40 }} />
+                    <Image src={window.location.origin + '/images/columbia_logo_blue.png'} style={{ width: 400, height: 100, marginLeft: -40 }} />
                   </View>
                   <View style={styles.spaceY}>
                     <Text style={[styles.textBold, { color: "#526274" }]}>Columbia Distributing</Text>

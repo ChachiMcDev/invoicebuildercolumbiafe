@@ -30,7 +30,7 @@ const ExpenseListFilters = () => {
                 <div className="input-group__item">
                     <input
                         name="search"
-                        placeholder="Search Expenses"
+                        placeholder="Search Invoices"
                         type="text"
                         className="text-input"
                         value={filters.text}

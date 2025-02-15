@@ -22,7 +22,7 @@ const InvoiceListItem = ({
         <div>
           <h3 className="list-item__title">Invoice Number#: {invoiceNumber}</h3>
           <span className="list-item__sub-title">
-            <span className="columbiaBlue">Order Date:</span> April, 20th 2025
+            <span className="columbiaBlue">Order Date:</span> {moment(createdAt).format("MMMM Do, YYYY")}
           </span>
           <span className="list-item__description">
             <span>

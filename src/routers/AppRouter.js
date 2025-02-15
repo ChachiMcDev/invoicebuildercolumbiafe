@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import InvoiceDashboardPage from '../components/InvoiceDashboardPage';
 import InvoiceView from '../components/InvoiceView';
 import Header from '../components/Header';
+import LoginPage from '../components/LoginPage';
 
 // import AddExpensePage from '../components/AddExpensePage';
 // import EditExpensePage from '../components/EditExpensePage';
@@ -17,7 +18,7 @@ const AppRouter = () => (
     <BrowserRouter >
         <Header />
         <Routes>
-
+            <Route path="/" element={<LoginPage />} />
             <Route path="/dashboard" element={<InvoiceDashboardPage />} />
             <Route path="/view/:id" element={<InvoiceView />} />
             <Route path="*" element={<NotFoundPage />} />

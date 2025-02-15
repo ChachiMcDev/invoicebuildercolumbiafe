@@ -15,9 +15,11 @@ const Header = () => {
           <Link className="header__title" to="/dashboard">
             <h1>Columbia</h1>
           </Link>
-          <button className="button button--link" >
-            Logout
-          </button>
+          <Link to="/">
+            <button className="button button--link" >
+              Logout
+            </button>
+          </Link>
         </div>
       </div>
     </header>

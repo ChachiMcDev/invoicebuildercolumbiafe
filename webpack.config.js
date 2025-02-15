@@ -40,8 +40,22 @@ module.exports = (env) => {
                 use: [
                     {
                         loader: 'file-loader',
+                    }
+                ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|otf)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192, // Convert images < 8kb to base64 strings
+                            name: 'assets/[hash:8].[ext]',
+                            publicPath: '../public', // Critical for resolving paths correctly
+                        },
                     },
                 ],
+
             },
             {
                 //use: ['style-loader', 'css-loader', 'sass-loader'],

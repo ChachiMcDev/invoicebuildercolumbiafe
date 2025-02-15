@@ -12,9 +12,14 @@ const getVisibleInvoices = (invoices, { text, sortBy, startDate, endDate }) => {
       const endDateMatch = newEnd
         ? newEnd.isSameOrAfter(createdAtMoment, "day")
         : true;
+
+      //loop through the products array and check if the item name includes the text
+      //we only want one true value so we use the second includes method for single true value
+      const itemTextMatch = invoice.products.map((product) => product.itemName.toLowerCase().includes(text.toLowerCase())).includes(true);
+
       const textMatch = invoice.description
         .toLowerCase()
-        .includes(text.toLowerCase());
+        .includes(text.toLowerCase()) || itemTextMatch;
 
       return startDateMatch && endDateMatch && textMatch;
     })

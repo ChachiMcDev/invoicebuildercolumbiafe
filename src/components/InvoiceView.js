@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetInvoiceByIdQuery } from "../api/getInvoices";
+import { useGetInvoiceByIdQuery, useGetInvoicesQuery } from "../api/getInvoices";
 import numeral from 'numeral';
+import moment from 'moment';
 import {
   Page,
   Image,
@@ -58,13 +59,18 @@ const styles = StyleSheet.create({
 
 const InvoiceView = () => {
   const { id } = useParams();
-  const { data, error, isLoading } = useGetInvoiceByIdQuery(id);
+  // const { data, error, isLoading } = useGetInvoiceByIdQuery(id);
+  const { data, error, isLoading } = useGetInvoicesQuery(`/api/getinvoices`);
+
+
   if (isLoading) {
     return <div>Loading...</div>;
   } else if (error) {
     return <div>Error: {error.message}</div>;
   } else if (data) {
-    const { invoiceNumber, companyName, products, address, city, state, zip, description, createdAt } = data;
+
+    const { invoiceNumber, companyName, products, address, city, state, zip, description, createdAt } = data.find((invoice) => invoice._id === id);
+    // const { invoiceNumber, companyName, products, address, city, state, zip, description, createdAt } = data;
     const invoiceTotal = products.reduce((accumulator, obj) => accumulator + obj.itemPrice * obj.quantity, 0);
     const taxTotal = invoiceTotal * 0.10;
     const grandTotal = invoiceTotal + taxTotal;
@@ -87,7 +93,12 @@ const InvoiceView = () => {
                 </View>
                 <View style={[styles.subheader, styles.bottomborder]}>
                   <View>
-                    <Text>Invoice No: {invoiceNumber}</Text>
+                    <Text style={styles.textBold}>Invoice Date: </Text>
+                    <Text style={styles.textBold}>Invoice No#: </Text>
+                  </View>
+                  <View>
+                    <Text style={{ marginLeft: -90, }}>{moment(createdAt).format("MMMM Do, YYYY")}</Text>
+                    <Text style={{ marginLeft: -90, }}>{invoiceNumber}</Text>
                   </View>
                   <View style={styles.spaceY}>
                     <Text>To:</Text>

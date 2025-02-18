@@ -5,8 +5,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //*********change depending on network http://10.17.5.12:3000 *****/
 export const getInvoicesApi = createApi({
   reducerPath: "getInvoicesApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
-  refetchOnFocus: true,
+  baseQuery: fetchBaseQuery({ baseUrl: "http://10.17.5.12:3000" }),
+  // refetchOnFocus: true,
   refetchOnReconnect: true,
   endpoints: (builder) => ({
     getInvoices: builder.query({
